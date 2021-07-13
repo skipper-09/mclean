@@ -1,6 +1,8 @@
+//@ts-check
 import Childharga from "./Child Component/Childharga";
 import { usedataproduk } from "../lib/swr-fetch";
 export default function Harga() {
+  // @ts-ignore
   const { data, error } = usedataproduk();
   if (error) {
     return <div>Error loading</div>;

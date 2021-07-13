@@ -25,7 +25,7 @@ export default function blog({ data }) {
 }
 export async function getStaticProps() {
   const res = await fetch(
-    "https://newsapi.org/v2/top-headlines?country=id&apiKey=6c7c7bf3c51349ff9409cc02617757be"
+    "https://newsapi.org/v2/top-headlines?country=us&apiKey=6c7c7bf3c51349ff9409cc02617757be"
   );
   const data = await res.json();
   return {

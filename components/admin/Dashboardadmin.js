@@ -1,3 +1,4 @@
+//@ts-check
 import React from "react";
 
 export default function Dashboardadmin() {
@@ -28,6 +29,9 @@ export default function Dashboardadmin() {
                     <div className="col-auto">
                       <i className="bi bi-book-half text-grey-500 fs-1 " />
                     </div>
+                    <span className="text-center">
+                      Lihat <i className="bi bi-arrow-right"></i>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -53,6 +57,9 @@ export default function Dashboardadmin() {
                     <div className="col-auto">
                       <i className="bi bi-bag-fill text-gray-800 fs-1" />
                     </div>
+                    <span className="text-center">
+                      Lihat <i className="bi bi-arrow-right"></i>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -78,6 +85,9 @@ export default function Dashboardadmin() {
                     <div className="col-auto">
                       <i className="bi bi-people-fill text-grey-800 fs-1 " />
                     </div>
+                    <span className="text-center">
+                      Lihat <i className="bi bi-arrow-right"></i>
+                    </span>
                   </div>
                 </div>
               </div>

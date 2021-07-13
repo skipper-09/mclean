@@ -1,3 +1,4 @@
+//@ts-check
 import { db } from "../../../lib/db";
 
 const handler = async (_, res) => {

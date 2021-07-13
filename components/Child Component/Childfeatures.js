@@ -1,3 +1,4 @@
+//@ts-check
 const Childfeatures = (props) => {
   return (
     <div className="col-lg-4 col-md-4">

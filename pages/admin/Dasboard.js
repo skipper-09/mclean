@@ -1,3 +1,4 @@
+//@ts-check
 import React from "react";
 import Dashboardadmin from "../../components/admin/Dashboardadmin";
 import Layoutadm from "../../components/admin/Layoutadm";

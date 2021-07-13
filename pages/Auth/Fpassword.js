@@ -1,3 +1,4 @@
+//@ts-check
 import React from "react";
 import swal from "sweetalert";
 import Layout from "../../components/Layout";
@@ -8,6 +9,7 @@ export default function Fpassword() {
       title: "Reset Pasword Berhasil",
       text: "Cek Email Anda",
       icon: "success",
+      // @ts-ignore
       button: "oke",
     });
   };

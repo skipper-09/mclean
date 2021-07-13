@@ -34,6 +34,10 @@ module.exports = {
         destination: "/admin/orderlist",
       },
       {
+        source: "/Update",
+        destination: "/admin/Update-produk",
+      },
+      {
         source: "/blog",
         destination: "/blog/blog",
       },

@@ -1,3 +1,4 @@
+//@ts-check
 import Childfeatures from "./Child Component/Childfeatures";
 
 export default function Features() {

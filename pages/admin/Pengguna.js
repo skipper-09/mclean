@@ -1,3 +1,4 @@
+//@ts-check
 import React from "react";
 import Layoutadm from "../../components/admin/Layoutadm";
 
@@ -69,7 +70,7 @@ export default function Pengguna() {
                             <div className="form-group mb-3">
                               <label htmlFor="">Password User</label>
                               <input
-                                type="password"
+                                type="text"
                                 className="form-control"
                                 name=""
                                 id=""
@@ -112,7 +113,6 @@ export default function Pengguna() {
                       <td>@mdo</td>
                       <td className="align-items-center ">
                         <a
-                          name=""
                           id=""
                           className="btn btn-primary btn-xs mx-2 "
                           href="#"
@@ -125,7 +125,6 @@ export default function Pengguna() {
                         </a>
 
                         <a
-                          name=""
                           id=""
                           className="btn btn-danger btn-xs mx-2"
                           href="#"

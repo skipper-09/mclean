@@ -1,30 +1,27 @@
 //@ts-check
 import React, { useState } from "react";
-
 export default function Modaltambahproduk(props) {
   const [kode, setKode] = useState("");
   const [nama_produk, setNama_produk] = useState("");
   const [harga, setHarga] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
-  const [gambar, setGambar] = useState('');
-  // const [selectedFile, setSelectedFile] = useState("");
-  // const [file, SetFile] = useState("");
- 
-  // const onSellectImg = (e) => {
-  //   if (!e.target.files || e.target.files.length === 0) {
-  //     setSelectedFile(undefined);
-  //     return;
-  //     {
-  //       const _file = e.target.files(0);
-  //       const reader = new FileReader();
-  //       reader.onload = function () {
-  //         SetFile(_file);
-  //         setGambar(reader.result);
-  //       };
-  //       reader.readAsDataURL(_file);
-  //     }
-  //   }
-  // };
+  const [gambar, setGambar] = useState(null);
+  const [selectedImg, setSelectedFile] = useState("");
+  const [file, setFile] = useState("");
+
+  const onSelectImg = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    const _file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function () {
+      setFile(_file);
+      setGambar(reader.result);
+    };
+    reader.readAsDataURL(_file);
+  };
 
   async function submitHandler() {
     try {
@@ -95,7 +92,6 @@ export default function Modaltambahproduk(props) {
                   onChange={(e) => setNama_produk(e.target.value)}
                 />
               </div>
-              <p>{nama_produk}</p>
               <div className="form-group mb-3">
                 <label htmlFor="">Harga Produk</label>
                 <input
@@ -118,15 +114,19 @@ export default function Modaltambahproduk(props) {
                 ></textarea>
               </div>
               <div className="form-group mb-3">
-                <label htmlFor="">Gambar Produk</label>
+                <label htmlFor="uploadGambar">
+                  <img
+                    className=" img-thumbnail w-25"
+                    src={gambar}
+                    alt="Pilih Gambar"
+                  ></img>
+                </label>
                 <input
                   type="file"
                   className="form-control"
-                  name=""
-                  id="gambar"
-                  value={gambar}
-                  
-                   onChange={(e) => setGambar(e.target.value)}
+                  id="uploadGambar"
+                  style={{ display: "none" }}
+                  onChange={onSelectImg}
                 />
               </div>
             </div>

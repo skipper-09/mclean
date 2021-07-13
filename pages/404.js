@@ -1,3 +1,4 @@
+//@ts-check
 import Link from "next/link";
 import React from "react";
 import Layout from "../components/Layout";
@@ -26,12 +27,6 @@ export default function NotFound() {
                   <a className="btn btn-primary btn-lg">
                     <span className="glyphicon glyphicon-home"></span>
                     <i className="bi bi-arrow-left"> </i> Home
-                  </a>
-                </Link>
-                <Link href="/Contact">
-                  <a className="btn btn-primary btn-lg">
-                    <span className="glyphicon glyphicon-envelope"></span>{" "}
-                    Contact Support
                   </a>
                 </Link>
               </div>

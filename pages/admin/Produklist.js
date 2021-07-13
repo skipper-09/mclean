@@ -1,10 +1,13 @@
+//@ts-check
 import React from "react";
 import Layoutadm from "../../components/admin/Layoutadm";
 import Modaltambahproduk from "../../components/admin/child admin/modaltambahproduk";
 import { usedataproduk } from "../../lib/swr-fetch";
 import { mutate } from "swr";
 import Router from "next/router";
+import Link from "next/Link";
 export default function Produklist() {
+  // @ts-ignore
   const { data, error } = usedataproduk();
   if (error) {
     return <div>Error loading</div>;
@@ -20,15 +23,14 @@ export default function Produklist() {
   }
 
   // hapus produk
-
   async function Hapusproduk(kode) {
-    
     const res = await fetch(
       `http://localhost:3000/api/hapusproduk?kode=${kode}`,
       {
         method: "DELETE",
       }
     );
+
     console.log(res);
     const json = await res.json();
     if (!res.ok) throw Error(json.message);
@@ -68,7 +70,6 @@ export default function Produklist() {
                   <table className="table table-setriped">
                     <thead className="table-secondary text-center">
                       <tr>
-                        <th scope="col">Kode Produk</th>
                         <th scope="col">Nama Produk</th>
                         <th scope="col">Harga</th>
                         <th scope="col">Deskripsi</th>
@@ -78,47 +79,36 @@ export default function Produklist() {
                     </thead>
                     <tbody>
                       {data.map((pro, idx) => (
-                        <tr key={idx}>
-                          <th scope="row" className="text-center">
-                            {" "}
-                            {pro.kode}
-                          </th>
+                        <tr key={idx} className="text-center">
                           <td>{pro.nama_produk}</td>
                           <td>{pro.harga}</td>
                           <td>{pro.deskripsi}</td>
                           <td className="col-md-2">
-                            <img src={pro.gambar} className=" img-thumbnail" />
+                            <img src={pro.gambar} className=" img-fluid w-50" />
                           </td>
-                          <td className="d-flex justify-content-center align-items-center">
-                            <a
-                              name=""
-                              id=""
-                              className="btn btn-primary btn-xs me-2"
-                              href="#"
-                              role="button"
+                          <td>
+                            <Link
+                              href={`/Update?kode=${pro.kode}&nama_produk=${pro.nama_produk}&harga=${pro.harga}&deskripsi=${pro.deskripsi}`}
                             >
-                              <span>
-                                <i className="bi bi-pencil-square me-2"></i>
-                                Edit
-                              </span>
-                            </a>
+                              <button className="btn btn-xs btn-primary me-2">
+                                <span>
+                                  <i className="bi bi-pencil-square me-2"></i>
+                                  Edit
+                                </span>
+                              </button>
+                            </Link>
 
-                            <button className=" btn btn-danger" value={pro.kode}
-                              onClick={(e)=> Hapusproduk(e.target.value)}><span>
-                                <i className="bi bi-trash me-2"></i>
-                                Hapus
-                              </span></button>
-                            {/* <a
-                              className="btn btn-danger btn-xs me-2 "
+                            <button
+                              className=" btn btn-danger"
                               value={pro.kode}
+                              // @ts-ignore
                               onClick={(e) => Hapusproduk(e.target.value)}
-                              role="button"
                             >
                               <span>
                                 <i className="bi bi-trash me-2"></i>
                                 Hapus
                               </span>
-                            </a> */}
+                            </button>
                           </td>
                         </tr>
                       ))}

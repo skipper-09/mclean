@@ -5,7 +5,7 @@ const Childharga = (props) => {
     <div>
       <div className="box mt-2">
         <h3 className="text-capitalize">{props.namaproduk}</h3>
-        <img src={props.img} className="w-100" alt="gambar produk" />
+        <img src={props.img} className="img-fluid" alt="gambar produk" />
         <div className="price">
           <sup>Rp</sup>
           {props.harga}

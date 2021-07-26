@@ -1,7 +1,8 @@
 //@ts-check
+
 import React, { useState } from "react";
 export default function Modaltambahproduk(props) {
-  const [kode, setKode] = useState("");
+  // const [kode, setKode] = useState("");
   const [nama_produk, setNama_produk] = useState("");
   const [harga, setHarga] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
@@ -31,7 +32,7 @@ export default function Modaltambahproduk(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          kode,
+          // kode,
           nama_produk,
           harga,
           deskripsi,
@@ -70,7 +71,7 @@ export default function Modaltambahproduk(props) {
             </div>
 
             <div className="modal-body">
-              <div className="form-group mb-3">
+              {/* <div className="form-group mb-3">
                 <label htmlFor="">Kode Produk</label>
                 <input
                   type="number"
@@ -80,7 +81,7 @@ export default function Modaltambahproduk(props) {
                   value={kode}
                   onChange={(e) => setKode(e.target.value)}
                 />
-              </div>
+              </div> */}
               <div className="form-group mb-3">
                 <label htmlFor="">Nama Produk</label>
                 <input

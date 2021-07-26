@@ -1,11 +1,9 @@
 //@ts-check
 import { db } from "../../lib/db";
-
 const handler = async (req, res) => {
   const { kode, nama_produk, harga, deskripsi, gambar } = req.body;
-
   try {
-    if (!kode || !nama_produk || !harga || !deskripsi) {
+    if (!nama_produk || !harga || !deskripsi) {
       return res.status(400).json({ message: "input harus di isi semua" });
     }
     const results = await db.query(

@@ -2,7 +2,7 @@
 import { db } from "../../lib/db";
 const handler = async (_, res) => {
   try {
-    const results = await db.query(`SELECT * FROM produk`);
+    const results = await db.query(`SELECT * FROM produk `);
     await db.end;
     return res.json(results);
   } catch (e) {

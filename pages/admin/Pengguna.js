@@ -1,8 +1,22 @@
-//@ts-check
+// @ts-nocheck
 import React from "react";
 import Layoutadm from "../../components/admin/Layoutadm";
-
+import { user } from "../../lib/swr-user";
 export default function Pengguna() {
+  const { data, error } = user();
+  console.log(data);
+  if (error) {
+    return <div>Error loading</div>;
+  }
+  if (!data) {
+    return (
+      <div className=" d-flex justify-content-center align-self-center">
+        <div className="spinner-border text-primary  " role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
       <Layoutadm title="Pengguna">
@@ -15,8 +29,7 @@ export default function Pengguna() {
                 <div className="d-flex flex-row bd-highlight">
                   <div className=" p-3 bd-highlight">Data User</div>
                   <div className=" p-2 bd-highlight">
-                    {/* Button trigger modal */}
-                    <button
+                    {/* <button
                       type="button"
                       className="btn btn-primary"
                       data-bs-toggle="modal"
@@ -24,9 +37,8 @@ export default function Pengguna() {
                     >
                       <i className="bi bi-people-fill me-2" />
                       Tambah User
-                    </button>
-                    {/* Modal */}
-                    <div
+                    </button> */}
+                    {/* <div
                       className="modal fade"
                       id="exampleModal"
                       tabIndex={-1}
@@ -92,51 +104,51 @@ export default function Pengguna() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <table className="table table-setriped text-center">
                   <thead className="table-secondary">
                     <tr>
-                      <th scope="col">No</th>
                       <th scope="col">Nama User</th>
                       <th scope="col">Email</th>
                       <th scope="col">Pasword</th>
-                      <th scope="col">Opsi</th>
+                      {/* <th scope="col">Opsi</th> */}
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td className="align-items-center ">
-                        <a
-                          id=""
-                          className="btn btn-primary btn-xs mx-2 "
-                          href="#"
-                          role="button"
-                        >
-                          <span>
-                            <i className="bi bi-pencil-square me-2"></i>
-                            Edit
-                          </span>
-                        </a>
+                    {data.map((user, idx) => (
+                      <tr key={idx}>
+                        <td>{user.nama_user}</td>
+                        <td>{user.email}</td>
+                        <td>{user.password}</td>
+                        {/* <td className="align-items-center ">
+                          <a
+                            id=""
+                            className="btn btn-primary btn-xs mx-2 "
+                            href="#"
+                            role="button"
+                          >
+                            <span>
+                              <i className="bi bi-pencil-square me-2"></i>
+                              Edit
+                            </span>
+                          </a>
 
-                        <a
-                          id=""
-                          className="btn btn-danger btn-xs mx-2"
-                          href="#"
-                          role="button"
-                        >
-                          <span>
-                            <i className="bi bi-trash me-2"></i>
-                            Hapus
-                          </span>
-                        </a>
-                      </td>
-                    </tr>
+                          <a
+                            id=""
+                            className="btn btn-danger btn-xs mx-2"
+                            href="#"
+                            role="button"
+                          >
+                            <span>
+                              <i className="bi bi-trash me-2"></i>
+                              Hapus
+                            </span>
+                          </a>
+                        </td> */}
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

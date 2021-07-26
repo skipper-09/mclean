@@ -14,7 +14,9 @@ const Childharga = (props) => {
         <ul>
           <li>{props.deskripsi}</li>
         </ul>
-        <Link href="/Cekout">
+        <Link
+          href={`/Cekout?nama_produk=${props.nama_produk}&kode=${props.kode}`}
+        >
           <a className="btn-buy">Booking</a>
         </Link>
       </div>

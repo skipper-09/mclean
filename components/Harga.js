@@ -34,6 +34,9 @@ export default function Harga() {
                   img={produk.gambar}
                   harga={produk.harga}
                   deskripsi={produk.deskripsi}
+                  //dikirim ke cek out
+                  nama_produk={produk.nama_produk}
+                  kode={produk.kode}
                 />
               </div>
             ))}

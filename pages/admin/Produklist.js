@@ -30,7 +30,6 @@ export default function Produklist() {
         method: "DELETE",
       }
     );
-
     console.log(res);
     const json = await res.json();
     if (!res.ok) throw Error(json.message);
@@ -47,7 +46,6 @@ export default function Produklist() {
           <div className="container-fluid">
             <div className="row">
               <div className=" fw-bold fs-3 text-capitalize">Produk</div>
-
               <div className="col-md-12 mt-2 ">
                 <div className="d-flex flex-row bd-highlight">
                   <div className=" p-3 bd-highlight">Data Produk</div>
@@ -84,7 +82,10 @@ export default function Produklist() {
                           <td>{pro.harga}</td>
                           <td>{pro.deskripsi}</td>
                           <td className="col-md-2">
-                            <img src={pro.gambar} className=" img-fluid w-50" />
+                            <img
+                              src={pro.gambar}
+                              className=" img-thumbnail w-25 "
+                            />
                           </td>
                           <td>
                             <Link

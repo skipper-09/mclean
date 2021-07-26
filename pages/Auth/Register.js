@@ -1,14 +1,41 @@
-//@ts-check
+// @ts-nocheck
 import {
   faFacebookF,
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Router from "next/router";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout";
 export default function Register() {
+  const [nama_user, setNama_user] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  async function registerHandler() {
+    try {
+      const res = await fetch("http://localhost:3000/api/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nama_user,
+          email,
+          password,
+        }),
+      });
+      console.log(res);
+      const json = await res.json();
+      if (!res.ok) throw Error(json.message);
+      alert("Register Sukses");
+      Router.push("/admin");
+    } catch (e) {
+      throw Error(e.message);
+    }
+  }
   return (
     <div>
       <Layout title="Register" />
@@ -53,7 +80,8 @@ export default function Register() {
                   <input
                     className="mb-4 input"
                     type="text"
-                    name="email"
+                    value={nama_user}
+                    onChange={(e) => setNama_user(e.target.value)}
                     placeholder="Masukkan Nama"
                   />
                 </div>
@@ -64,7 +92,8 @@ export default function Register() {
                   <input
                     className="mb-4 input"
                     type="text"
-                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter a valid email address"
                   />
                 </div>
@@ -74,18 +103,23 @@ export default function Register() {
                   </label>
                   <input
                     type="password"
-                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
                     className="input"
                   />
                 </div>
-                <Link href="/admin">
-                  <div className="row mb-3 px-3">
-                    <button type="submit" className="btn btn-blue text-center">
-                      Register
-                    </button>
-                  </div>
-                </Link>
+
+                <div className="row mb-3 px-3">
+                  <button
+                    type="submit"
+                    className="btn btn-blue text-center"
+                    onClick={registerHandler}
+                  >
+                    Register
+                  </button>
+                </div>
+
                 <div className="row mb-4 px-3">
                   <small className="font-weight-bold">
                     Do you have an account?

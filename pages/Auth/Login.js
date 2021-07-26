@@ -1,14 +1,40 @@
-//@ts-check
+// @ts-nocheck
 import {
   faFacebookF,
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Router from "next/router";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout";
 export default function login() {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  async function loginHandler() {
+    try {
+      const res = await fetch("http://localhost:3000/api/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      const json = await res.json();
+      console.log(json);
+      if (!res.ok) throw Error(json.message);
+      alert("Login Sukses");
+      Router.push("/admin");
+    } catch (e) {
+      throw Error(e.message);
+    }
+  }
+
   return (
     <div>
       <Layout title="Login" />
@@ -54,6 +80,8 @@ export default function login() {
                     className="mb-4 input"
                     type="text"
                     name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter a valid email address"
                   />
                 </div>
@@ -64,13 +92,15 @@ export default function login() {
                   <input
                     type="password"
                     name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
                     className="input"
                   />
                 </div>
 
                 <div className="row mb-3 px-3">
-                  <Link href="/admin">
+                  <Link href="/Admin">
                     <button type="submit" className="btn btn-blue text-center">
                       Login
                     </button>

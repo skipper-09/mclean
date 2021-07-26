@@ -77,7 +77,7 @@ export default function Headeradmin() {
                     </a>
                   </li>
                   <li>
-                    <Link href="/admin">
+                    <Link href="/">
                       <a className="dropdown-item">
                         <span className="me-2">
                           <i className="bi bi-box-arrow-right" />

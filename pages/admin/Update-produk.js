@@ -64,7 +64,6 @@ export default function updateproduk() {
       //set submit false
       if (!res.ok) throw Error(json.message);
       alert("Penambahan data sukses");
-
       Router.push("/Data-produk");
     } catch (e) {
       throw Error(e.message);

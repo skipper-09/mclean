@@ -7,6 +7,7 @@ import Router from "next/router";
 
 export default function Cekout() {
   const [_nama_produk, setNama_produk] = useState();
+
   const [nama_pemesan, setNama_pemesan] = useState();
   const [no_tlpon, setNotlpon] = useState();
   const [email, setEmail] = useState();
@@ -24,9 +25,6 @@ export default function Cekout() {
     if (typeof nama_produk == "string") {
       setNama_produk(nama_produk);
     }
-    // if (typeof kode == "string") {
-    //   setNama_produk(kode);
-    // }
   }, [nama_produk, kode]);
 
   //menambahkan kedatabase
@@ -113,11 +111,12 @@ export default function Cekout() {
                     </label>
                   </div>
                   <div className="col-12">
-                    <input
+                    <label>{_nama_produk}</label>
+                    {/* <input
                       className="order-form-input"
                       value={_nama_produk}
-                      onChange={(e) => setNama_produk(e.target.value)}
-                    />
+                      // onChange={(e) => setNama_produk(e.target.value)}
+                    /> */}
                   </div>
                 </div>
 

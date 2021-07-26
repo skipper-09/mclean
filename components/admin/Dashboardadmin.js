@@ -112,7 +112,7 @@ export default function Dashboardadmin() {
                     <div className="col-auto">
                       <i className="bi bi-people-fill text-grey-800 fs-1 " />
                     </div>
-                    <Link href="/User">
+                    <Link href="/Pengguna">
                       <div className=" d-flex justify-content-center align-content-center">
                         <button className=" btn btn-success w-50">
                           Lihat <i className="bi bi-arrow-right"></i>
